@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+ http://www.springframework.org/schema/mvc
+ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	
+	<bean class="it.digitalgarage.marketplace.commons.restinvoker.requestmapping.WebConfig" />
+	<bean class="it.digitalgarage.marketplace.commons.fe.formatter.FormatterConfiguration" />
+
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="defaultViews">
+       	 	<list>
+            	<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+        	</list>
+    	</property>
+	</bean>
+	
+	<!-- Register "global" interceptor beans to apply to all registered HandlerMappings -->
+	<bean class="org.springframework.web.servlet.i18n.CookieLocaleResolver" 
+			id="localeResolver" >
+			<property name="cookieName"  value="locale" />
+			<property name="defaultLocale"  value="it_it" />
+	</bean>
+	
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" >
+			<property name="paramName" value="lang" />
+		</bean>
+	</mvc:interceptors>
+
+	<!--<mvc:annotation-driven conversion-service="conversionService"/>-->
+	<!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+		<!--<property name="formatters">-->
+			<!--<set>-->
+				<!--<bean class="it.digitalgarage.marketplace.commons.fe.formatter.BigDecimalFormatter"/>-->
+			<!--</set>-->
+		<!--</property>-->
+	<!--</bean>-->
+
+
+	<bean id="messageSource"
+        class="it.digitalgarage.marketplace.commons.fe.context.support.WildcardReloadableResourceBundleMessageSource">
+        <property name="basenames">
+        	<list>
+        		<value>classpath*:i18n/**/messages*.properties</value>
+        	</list>
+        </property>	
+        <property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+	<mvc:interceptors>
+		<bean id="errorLoggerHandler" class="it.digitalgarage.marketplace.commons.fe.handler.ErrorLoggerHandler"/>
+		<!-- 
+		<bean id="restExceptionHandler" class="it.digitalgarage.marketplace.commons.fe.handler.RestExceptionHandler" />
+		 -->
+	</mvc:interceptors>
+	
+	
+	
+	<bean id="multipartResolver"   class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="20971520" />
+	</bean>
+		
+</beans>

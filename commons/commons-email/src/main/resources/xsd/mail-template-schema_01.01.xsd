@@ -1,0 +1,37 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://it/eng/rete2i/asset/commons/email/jaxb"
+xmlns="http://it/eng/rete2i/asset/commons/email/jaxb"
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:xmime="http://www.w3.org/2005/05/xmlmime" 
+elementFormDefault="qualified">
+	
+		<xs:element name="mails">
+			<xs:complexType>
+			<xs:sequence>
+				<xs:element name="mail" type="Mail" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>	
+			</xs:complexType>
+		</xs:element>
+		
+		<xs:complexType name="Mail">
+			<xs:sequence>
+				<xs:element name="subject"  type="xs:string" minOccurs="1" maxOccurs="1" />
+				<xs:element name="content"  type="xs:string" minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+			<xs:attribute name="language" type="language" use="required" />
+			<xs:attribute name="defaultTemplate" type="xs:boolean" use="optional" default="false" />
+			<xs:attribute name="html" type="xs:boolean" use="optional" default="true" />
+		</xs:complexType>
+	
+		<xs:simpleType name="language">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="IT" />
+				<xs:enumeration value="EN" />
+				<xs:enumeration value="DE" />
+				<xs:enumeration value="FR" />
+			</xs:restriction>
+		</xs:simpleType>
+		
+</xs:schema>
+
+

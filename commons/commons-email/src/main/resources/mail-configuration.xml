@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/jdbc 
+		http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
+
+	<bean id="mailManager" class="it.digitalgarage.marketplace.commons.email.template.MailManager" scope="singleton">
+		<property name="enableCache" value="true" />
+		<property name="basePathTemplate"  value="classpath:template/mail/" />
+	</bean>
+	
+	<bean id="GenerateMailMessage" class="it.digitalgarage.marketplace.commons.email.template.GenerateMailMessage">
+		<property name="mailManager" ref="mailManager" />
+	</bean>
+	
+	<bean id="mailChannel" class="it.digitalgarage.marketplace.commons.email.MailChannel">
+		<property name="from" ref="from" />
+		<property name="mailSender" ref="mailSender" />
+	</bean>
+ 
+</beans>

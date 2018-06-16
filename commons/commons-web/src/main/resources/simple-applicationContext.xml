@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   http://www.springframework.org/schema/context 
+	   					   http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	   					   ">
+
+	<bean class="it.digitalgarage.marketplace.commons.restinvoker.factory.RestFactory">
+		<property name="basePackage" value="it.digitalgarage.marketplace" />
+		<property name="restTemplateFactory" ref="restTemplateFactory" />
+	</bean>
+	
+	<bean name="restTemplateFactory" class="it.digitalgarage.marketplace.commons.fe.formatter.CustomRestTemplateFactory" />
+	
+	<context:component-scan base-package="it.digitalgarage.marketplace.commons,it.digitalgarage.marketplace.*.controller" />
+	<!-- ,file:${asset.external.path:'.'}/enviroment.properties -->
+	<context:property-placeholder order="1" location="classpath*:it/digitalgarage/marketplace/**/be/signature.properties,classpath*:it/digitalgarage/marketplace/**/be/config.properties,classpath*:application.properties" system-properties-mode="OVERRIDE" />
+	
+	<import resource="classpath*:mvc-dispatcher-servlet.xml"/>
+	<import resource="classpath*:it/digitalgarage/marketplace/**/be/spring-config.xml" />
+	
+</beans>

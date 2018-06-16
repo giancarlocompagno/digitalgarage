@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mails 
+	xmlns="http://it/digitalgarage/marketplace/commons/email/jaxb"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://it/digitalgarage/marketplace/commons/email/jaxb ../../../../main/resources/xsd/mail-template-schema_01.01.xsd"
+	>
+	
+	<mail language="IT" defaultTemplate="true">
+		<subject>Test Invio Mail ciao ${nome} ${cognome}</subject>
+		<content><![CDATA[
+			<html>
+				<body>
+					<h1>BENVENUTO</h1>
+					<br/>
+					 ${nome} ${cognome}
+				</body>
+			</html>	
+		]]></content>
+	</mail>
+	
+	<mail language="EN" defaultTemplate="false">
+		<subject>Test send mail ${nome} ${cognome}</subject>
+		<content><![CDATA[
+			<html>
+				<body>
+					<h1>Welcome</h1>
+					<br/>
+					 ${nome} ${cognome}
+				</body>
+			</html>	
+		]]></content>
+	</mail>
+	
+</mails>
