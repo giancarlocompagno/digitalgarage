@@ -21,7 +21,7 @@
 
  	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename">
-			<value>messages/anagrafica/messages</value>
+			<value>messages/asteonline/messages</value>
 		</property>
 		<property name="alwaysUseMessageFormat" value="true" />
 	</bean>
@@ -29,7 +29,5 @@
 	<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jndi/ds/digitalgarage" expected-type="javax.sql.DataSource" lookup-on-startup="false"/>
 	
  	<context:component-scan base-package="it.digitalgarage.marketplace.offertaasta.be" />
-
-
 
 </beans>
