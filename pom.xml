@@ -8,6 +8,7 @@
         <module>commons</module>
         <module>offerta-asta</module>
         <module>example</module>
+		<module>example-fe</module>
     </modules>
     <packaging>pom</packaging>
 	<properties>
