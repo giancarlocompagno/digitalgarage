@@ -39,7 +39,7 @@ public class PreAuthenticationDetailsSource implements AuthenticationDetailsSour
 		if(username!=null && isAuthorized(username)){
 			List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
 			grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-			UserInfo user = new UserInfo(username,"SICILIA", null,grantedAuthorities);
+			UserInfo user = new UserInfo(username, null,grantedAuthorities);
 			return user;
 		}else{
 

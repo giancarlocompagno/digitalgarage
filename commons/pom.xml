@@ -26,6 +26,8 @@
         <module>commons-tomcat</module>
         <module>commons-validator</module>
         <module>commons-web</module>
+        <module>commons-keycloak</module>
+        <module>commons-swagger</module>
     </modules>
 
 

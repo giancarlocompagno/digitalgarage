@@ -37,13 +37,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+//import springfox.documentation.builders.ApiInfoBuilder;
+//import springfox.documentation.builders.PathSelectors;
+//import springfox.documentation.builders.RequestHandlerSelectors;
+//import springfox.documentation.service.ApiInfo;
+//import springfox.documentation.spi.DocumentationType;
+//import springfox.documentation.spring.web.plugins.Docket;
+//import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 public class OnStartConfiguration {
@@ -166,114 +166,113 @@ public class OnStartConfiguration {
 //	}
 //}
 
-@Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-@ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
-class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
+//@Configuration
+//@EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
+//class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
+//
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
+//        SimpleAuthorityMapper grantedAuthorityMapper = new SimpleAuthorityMapper();
+//        grantedAuthorityMapper.setPrefix("ROLE_");
+//        grantedAuthorityMapper.setConvertToUpperCase(true);
+//        keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(grantedAuthorityMapper);
+//        auth.authenticationProvider(keycloakAuthenticationProvider);
+//    }
+//
+//
+//    @Autowired
+//    public KeycloakClientRequestFactory keycloakClientRequestFactory;
+//
+//    @Bean
+//    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//    public KeycloakRestTemplate keycloakRestTemplate() {
+//        return new KeycloakRestTemplate(keycloakClientRequestFactory);
+//    }
+//
+//    @Bean
+//    @Override
+//    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
+//        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
+//    }
+//
+//    @Bean
+//    public KeycloakConfigResolver KeycloakConfigResolver() {
+//        return new KeycloakSpringBootConfigResolver();
+//    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        super.configure(http);
+//        http.csrf().disable()
+//                .authorizeRequests()
+//                .anyRequest().permitAll();
+//
+//    }
+//
+//}
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
-        SimpleAuthorityMapper grantedAuthorityMapper = new SimpleAuthorityMapper();
-        grantedAuthorityMapper.setPrefix("ROLE_");
-        grantedAuthorityMapper.setConvertToUpperCase(true);
-        keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(grantedAuthorityMapper);
-        auth.authenticationProvider(keycloakAuthenticationProvider);
-    }
-
-
-    @Autowired
-    public KeycloakClientRequestFactory keycloakClientRequestFactory;
-
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public KeycloakRestTemplate keycloakRestTemplate() {
-        return new KeycloakRestTemplate(keycloakClientRequestFactory);
-    }
-
-    @Bean
-    @Override
-    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
-    }
-
-    @Bean
-    public KeycloakConfigResolver KeycloakConfigResolver() {
-        return new KeycloakSpringBootConfigResolver();
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
-        http.csrf().disable()
-                .authorizeRequests()
-////                .antMatchers("/concessione**").hasRole("USER")
-                .anyRequest().permitAll();
-
-    }
-
-}
-
-@Configuration
-@EnableSwagger2
-class SwaggerConfig extends WebMvcConfigurationSupport {
-	@Bean
-	public Docket productApi() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select().apis(RequestHandlerSelectors.basePackage("it"))
-				.paths(PathSelectors.any())
-				.build().pathMapping("/").apiInfo(apiInfo()).useDefaultResponseMessages(false);
-
-	}
-
-	@Override
-	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-		registry.addResourceHandler("/webjars/**")
-				.addResourceLocations("classpath:/META-INF/resources/webjars/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
-		registry.addResourceHandler("/swagger-ui.html")
-				.addResourceLocations(getStaticLocations()).setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
-		registry.addResourceHandler("/*")
-				.addResourceLocations(getStaticLocations()).setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
-	}
-
-	private String[] getStaticLocations() {
-
-		String[] result = new String[5];
-		result[0] = "/";
-		result[1] = "classpath:/META-INF/resources/";
-		result[2] = "classpath:/resources/";
-		result[3] = "classpath:/static/";
-		result[4] = "/resources/";
-
-		return result;
-	}
-	@Bean
-	public ApiInfo apiInfo() {
-		final ApiInfoBuilder builder = new ApiInfoBuilder();
-		builder.title("Asset2i Api").version("1.0").license("(C) Engineering Ingegneria Informatica S.p.A. ")
-				.description("");
-
-		return builder.build();
-	}
-}
-
-@Configuration
-@EnableWebMvc
-class ApplicationConfigurerAdapter extends WebMvcConfigurerAdapter{
-
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
-
-	@Bean
-	public InternalResourceViewResolver viewResolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("classpath:/META-INF/resources/");
-		resolver.setSuffix(".html");
-		return resolver;
-	}
-
-}
+//@Configuration
+//@EnableSwagger2
+//class SwaggerConfig extends WebMvcConfigurationSupport {
+//	@Bean
+//	public Docket productApi() {
+//		return new Docket(DocumentationType.SWAGGER_2)
+//				.select().apis(RequestHandlerSelectors.basePackage("it"))
+//				.paths(PathSelectors.any())
+//				.build().pathMapping("/").apiInfo(apiInfo()).useDefaultResponseMessages(false);
+//
+//	}
+//
+//	@Override
+//	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+//
+//		registry.addResourceHandler("/webjars/**")
+//				.addResourceLocations("classpath:/META-INF/resources/webjars/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
+//		registry.addResourceHandler("/swagger-ui.html")
+//				.addResourceLocations(getStaticLocations()).setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
+//		registry.addResourceHandler("/*")
+//				.addResourceLocations(getStaticLocations()).setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
+//	}
+//
+//	private String[] getStaticLocations() {
+//
+//		String[] result = new String[5];
+//		result[0] = "/";
+//		result[1] = "classpath:/META-INF/resources/";
+//		result[2] = "classpath:/resources/";
+//		result[3] = "classpath:/static/";
+//		result[4] = "/resources/";
+//
+//		return result;
+//	}
+//	@Bean
+//	public ApiInfo apiInfo() {
+//		final ApiInfoBuilder builder = new ApiInfoBuilder();
+//		builder.title("Asset2i Api").version("1.0").license("(C) Engineering Ingegneria Informatica S.p.A. ")
+//				.description("");
+//
+//		return builder.build();
+//	}
+//}
+//
+//@Configuration
+//@EnableWebMvc
+//class ApplicationConfigurerAdapter extends WebMvcConfigurerAdapter{
+//
+//	@Override
+//	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+//		configurer.enable();
+//	}
+//
+//	@Bean
+//	public InternalResourceViewResolver viewResolver() {
+//		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//		resolver.setPrefix("classpath:/META-INF/resources/");
+//		resolver.setSuffix(".html");
+//		return resolver;
+//	}
+//
+//}

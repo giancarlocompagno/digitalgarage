@@ -17,8 +17,6 @@ public class CustomRestTemplateFactory implements RestTemplateFactory{
 	public RestTemplate create(){
 		RestTemplate restTemplate = new RestTemplate();
 
-		new MappingJackson2HttpMessageConverterFactory().resetObjectMapper(restTemplate.getMessageConverters());
-		
 		restTemplate.getInterceptors().add(new ClientHttpRequestInterceptor() {
 			
 			@Override
