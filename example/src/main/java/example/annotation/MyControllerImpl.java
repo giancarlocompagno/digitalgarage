@@ -1,12 +1,13 @@
 package example.annotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
+import org.springframework.stereotype.Controller;
 import example.MyController;
 import example.MyService;
 import it.digitalgarage.marketplace.commons.logging.Logger;
 import it.digitalgarage.marketplace.commons.logging.LoggerFactory;
+
 @Controller
 public class MyControllerImpl implements MyController {
 	

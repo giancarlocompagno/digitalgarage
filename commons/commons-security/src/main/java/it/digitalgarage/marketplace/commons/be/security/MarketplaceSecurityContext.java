@@ -49,20 +49,11 @@ public class MarketplaceSecurityContext {
 		if(SecurityContextHolder.getContext()!=null && SecurityContextHolder.getContext().getAuthentication()!=null){
 			if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof KeycloakPrincipal) {
 				KeycloakPrincipal p = (KeycloakPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-				return new UserInfo(p.getName(), (String)p.getKeycloakSecurityContext().getToken().getOtherClaims().get("dtg"), p.getKeycloakSecurityContext().getTokenString(), null);
+				return new UserInfo(p.getName(), p.getKeycloakSecurityContext().getTokenString(), null);
 			}
 		}
 		return null;
 //		return (UserInfo)(SecurityContextHolder.getContext()!=null && SecurityContextHolder.getContext().getAuthentication()!=null?SecurityContextHolder.getContext().getAuthentication().getPrincipal():null);
-	}
-
-	public static String getDtg() {
-		UserInfo userInfo = getUserInfo();
-		if(userInfo!=null){
-			return userInfo.getDtg();
-		}else{
-			return null;
-		}
 	}
 
 	public static String getAccessToken(){

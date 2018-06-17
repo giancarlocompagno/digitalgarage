@@ -23,7 +23,6 @@ public class UserInfo implements Serializable, UserDetails, CredentialsContainer
 	
 	private String username;
 	private Timestamp date;
-	private String dtg;
 	private String token;
 	/**
 	 * Instantiates a new user auth.
@@ -32,9 +31,8 @@ public class UserInfo implements Serializable, UserDetails, CredentialsContainer
 	 * @param dtg the dtg
 	 * @param grantedAuthorities the grantedAuthorities
 	 */
-	public UserInfo(String username,String dtg, String token,Collection<GrantedAuthority> grantedAuthorities) {
+	public UserInfo(String username,String token,Collection<GrantedAuthority> grantedAuthorities) {
 		this.username=username;
-		this.dtg = dtg;
 		this.grantedAuthorities = grantedAuthorities;
 		this.token = token;
 	}
@@ -119,10 +117,6 @@ public class UserInfo implements Serializable, UserDetails, CredentialsContainer
 		return date;
 	}
 	
-	public String getDtg() {
-		return dtg;
-	}
-
 	public String getToken() {
 		return token;
 	}

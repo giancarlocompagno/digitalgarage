@@ -6,10 +6,10 @@ public class SearchCriteria {
 	public static enum OPERATION{
 		EQUALS,
 		NOT_EQUALS,
-		GT,
-		LT,
-		GTE,
-		LTE,
+		GT,//>
+		LT,//<
+		GTE,//>=
+		LTE,//<=
 		//BETWEEN("between"),
 		LIKE,
 		IN,

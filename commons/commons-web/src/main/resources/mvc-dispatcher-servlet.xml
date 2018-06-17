@@ -12,7 +12,6 @@
 
 	
 	<bean class="it.digitalgarage.marketplace.commons.restinvoker.requestmapping.WebConfig" />
-	<bean class="it.digitalgarage.marketplace.commons.fe.formatter.FormatterConfiguration" />
 
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="defaultViews">

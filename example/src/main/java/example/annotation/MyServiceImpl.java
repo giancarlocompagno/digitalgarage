@@ -16,10 +16,6 @@ public class MyServiceImpl implements MyService {
 	@Autowired
 	private MyDao dao;
 
-	public void setDao(MyDao dao) {
-		this.dao = dao;
-	}
-
 	@Override
 	public void execute() {
 		LOGGER.info("SONO NEL SERVICE");

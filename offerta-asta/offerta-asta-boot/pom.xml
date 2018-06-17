@@ -15,6 +15,16 @@
   		<artifactId>commons-tomcat</artifactId>
   		<version>${project.version}</version>
   	</dependency>
+ <!--   	<dependency>
+  		<groupId>it.digitalgarage.marketplace</groupId>
+  		<artifactId>commons-swagger</artifactId>
+  		<version>${project.version}</version>
+   	</dependency>
+	<dependency>
+  		<groupId>it.digitalgarage.marketplace</groupId>
+  		<artifactId>commons-keycloak</artifactId>
+  		<version>${project.version}</version>
+  	</dependency> -->
   	<dependency>
   		<groupId>it.digitalgarage.marketplace</groupId>
   		<artifactId>offerta-asta-be</artifactId>
