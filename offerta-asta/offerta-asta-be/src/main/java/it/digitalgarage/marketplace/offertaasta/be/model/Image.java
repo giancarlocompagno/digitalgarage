@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Table
 @Entity
-public class Image extends AEntity<Long>{
+public class Image  extends AEntity<Long>{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="IMAGE_ID_SEQ") 
