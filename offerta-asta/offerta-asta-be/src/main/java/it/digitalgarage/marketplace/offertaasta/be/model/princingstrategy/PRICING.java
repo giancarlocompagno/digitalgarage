@@ -27,8 +27,7 @@ public enum PRICING {
 			return curr;
 			*/
 			if(bids!=null && bids.size()>0){
-				Bid bid = bids.stream().max(
-						(a,b)->{
+				Bid bid = bids.stream().max((a,b)->{
 							return a.getPrice().compareTo(b.getPrice());
 						}).get();
 				return bid;
@@ -46,7 +45,7 @@ public enum PRICING {
 	},DOWNWARDS{
 		@Override
 		public boolean canAdd(Bid b, Bid newBid) {
-			return newBid.getPrice().compareTo(b.getPrice())>0;
+			return newBid.getPrice().compareTo(b.getPrice())<0;
 		}
 		
 		@Override

@@ -42,7 +42,7 @@ public enum STATE {
 	},CLOSED {
 		@Override
 		public boolean canAddBid() {
-			return true;
+			return false;
 		}
 		@Override
 		public boolean amI(Auction auction) {
