@@ -1,0 +1,16 @@
+<div class="accordion" id="accordionExample">
+  <div class="card" *ngFor="let accordion of accordions; let i = index;">
+    <div class="card-header" id="heading'{{i}}">
+      <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+          {{accordion.title}}
+        </button>
+      </h5>
+    </div>
+    <div id="collapse{{i}}" class="collapse" [ngClass]="{'show': i==0}" [attr.aria-labelledby]="'heading'+i" data-parent="#accordionExample">
+      <div class="card-body">
+        {{accordion.text}}
+      </div>
+    </div>
+  </div>
+</div>
