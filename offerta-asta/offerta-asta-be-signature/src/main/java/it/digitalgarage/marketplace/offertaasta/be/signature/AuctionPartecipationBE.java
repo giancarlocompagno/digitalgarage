@@ -33,7 +33,7 @@ public interface AuctionPartecipationBE extends RRestBE<AuctionSearchDTO, Auctio
 	@ResponseBody
     @RequestMapping(value="/search",method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public PageAuctionDTO search(AuctionSearchDTO example) ;
+    public PageAuctionDTO search(@RequestBody AuctionSearchDTO example) ;
 	
 	
 	public class PageAuctionDTO extends Page<AuctionDTO>{
