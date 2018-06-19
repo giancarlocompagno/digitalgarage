@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { CardsComponent } from './cards/cards.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AccordionsComponent } from './accordions/accordions.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { HeroesComponent } from './heroes/heroes.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardsComponent,
     CarouselComponent,
-    AccordionsComponent
+    AccordionsComponent,
+    HeroesComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
