@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,8 +46,16 @@ public class VisitatoreController{
 		return new ResponseEntity<AuctionDTO>(aDto, HttpStatus.OK);
 	}
 	
+	@ResponseBody
+    @RequestMapping(value="auction",method = RequestMethod.POST)
+	public ResponseEntity<AuctionDTO> auctionDetail(@RequestBody AuctionDTO prova) {
+		// TODO Auto-generated method stub
+		AuctionDTO aDto = ricercaService.getAuction(prova.getOid());
+		return new ResponseEntity<AuctionDTO>(aDto, HttpStatus.OK);
+	}
+	
 	/**
-	 * modalità ?var=contenuto
+	 * modalitï¿½ ?var=contenuto
 	 * 
 	@ResponseBody
     @RequestMapping(value="/auction",method = RequestMethod.GET)
