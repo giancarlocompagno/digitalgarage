@@ -9,6 +9,8 @@ import { AccordionsComponent } from './accordions/accordions.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HeroesComponent } from './heroes/heroes.component';
 import { IndexComponent } from './index/index.component';
+import {HttpClientModule} from "@angular/common/http";
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { IndexComponent } from './index/index.component';
     CarouselComponent,
     AccordionsComponent,
     HeroesComponent,
-    IndexComponent
+    IndexComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

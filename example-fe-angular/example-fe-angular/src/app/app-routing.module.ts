@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {HeroesComponent} from "./heroes/heroes.component";
 import {IndexComponent} from "./index/index.component";
+import {UsersComponent} from "./users/users.component";
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent },
-  { path: '', component: IndexComponent }
+  { path: '', component: IndexComponent },
+  { path: 'user', component: UsersComponent }
 ];
 
 @NgModule({
