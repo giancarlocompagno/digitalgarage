@@ -31,12 +31,15 @@ public class RicercaAstaGuestService implements RicercaAstaGuest{
 	@Override
 	public AuctionDTO getAuction(Long oid) {
 		AuctionDTO aDTO = new AuctionDTO();
+		if(oid > 100 && oid < 0)
+			return aDTO;
 		aDTO.setOid(oid);
-		aDTO.setDescription("il mio tempo e' prezioso");
-		aDTO.setPricing("123,65");
+		aDTO.setDescription("Descrizione del DTO " + oid);
+		aDTO.setPricing("100,00" + oid.toString());
 		
 		// TODO Auto-generated method stub
 		return aDTO;
 	}
+	
 
 }
