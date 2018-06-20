@@ -9,7 +9,7 @@ export class UserService {
   constructor(private httpClient:HttpClient) { }
 
   url = "http://localhost:8084/esempio/saluta/"
-  getUser(text: string){
+  getUser(text: String = "Cristian"){
     return this.httpClient.get(`${this.url}${text}`);
   }
 }
