@@ -1,0 +1,7 @@
+<p>
+  U->{{users?.messaggio}}
+  {{users | json}}
+  {{nome}}
+</p>
+<input [(ngModel)]="nome" (keyup)="0">
+<button type="button" (click)="loadUser(nome)">Load User</button>
