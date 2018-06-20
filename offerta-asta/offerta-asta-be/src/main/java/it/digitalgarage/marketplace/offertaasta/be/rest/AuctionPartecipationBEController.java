@@ -51,12 +51,15 @@ public class AuctionPartecipationBEController implements AuctionPartecipationBE{
 	}
 	
 	
-	@ResponseBody
+/*	@ResponseBody
     @RequestMapping(value="/search",method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.OK)*/
     public PageAuctionDTO search(@RequestBody AuctionSearchDTO example) {
 		return service.search(example);
 	}
+
+	
+	
 
 	@Override
 	public AuctionFullDTO add(BidDTO bid) {
