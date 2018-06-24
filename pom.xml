@@ -10,6 +10,7 @@
         <module>example</module>
 		<module>example-fe</module>
         <module>example-fe-angular</module>
+		<module>simple-spring-boot</module>
     </modules>
     <packaging>pom</packaging>
 	<properties>
