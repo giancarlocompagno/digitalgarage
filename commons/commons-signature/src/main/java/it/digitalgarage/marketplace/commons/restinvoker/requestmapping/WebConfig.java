@@ -57,10 +57,17 @@ public class WebConfig extends WebMvcConfigurationSupport{
 		}
 		return handlerMapping;
 	}
+
+	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+			"classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/public/" };
+
 	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/*.js/**").addResourceLocations("classpath:/META-INF/resources/");
 		registry.addResourceHandler("/*.css/**").addResourceLocations("classpath:/META-INF/resources/");
+
+			registry.addResourceHandler("/**").addResourceLocations(
+					CLASSPATH_RESOURCE_LOCATIONS);
 	}
 	
 	

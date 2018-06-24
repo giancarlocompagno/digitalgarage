@@ -14,7 +14,7 @@ import it.example.security.MySecurityContext;
 import it.example.service.GestioneUtenteBE;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/userInfo")
 public class GestioneUtenteController {
 	
 	@Autowired
